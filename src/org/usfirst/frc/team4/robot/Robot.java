@@ -6,19 +6,18 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4.robot.subsystems.Drive;
+import org.usfirst.frc.team4.robot.subsystems.Elevator;
 import org.usfirst.frc.team4.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4.robot.subsystems.Pneumatics;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public static Pneumatics pneumatics;
+	public static Drive drive;
+	public static Elevator elevator;
 
     Command autonomousCommand;
 
@@ -28,8 +27,10 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-        // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        pneumatics = new Pneumatics();
+        drive = new Drive();
+        elevator = new Elevator();
     }
 	
 	public void disabledPeriodic() {
